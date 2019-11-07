@@ -4,7 +4,7 @@ from sanic import Sanic
 from sanic.response import json, text
 from sanic.exceptions import ServerError
 
-# import anomaly_detection.time_series.worker as w
+from anomaly_detection.time_series.worker import worker
 
 app = Sanic()
 
@@ -19,13 +19,13 @@ async def status(_):
     return json({'OK': time.time(), 'status': 200})
 
 
-# @app.post('/detect/time_series/low')
-# async def detect_time_series_low(request):
-#     data = request.json
-#     try:
-#         return json(w.worker(data))
-#     except Exception as e:
-#         raise ServerError(e)
+@app.post('/detect/time_series/outlier')
+async def detect_time_series_outlier(request):
+    data = request.json
+    try:
+        return json(worker(data))
+    except Exception as e:
+        raise ServerError(e)
 
 
 def run():
