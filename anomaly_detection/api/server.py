@@ -29,4 +29,4 @@ async def detect_time_series_outlier(request):
 
 
 def run():
-    app.run(host="0.0.0.0", port=7754)
+    app.run(host="0.0.0.0", port=8888)

@@ -1,5 +1,6 @@
 import logging
-import api.server as server
+
+import anomaly_detection.api.server as server
 
 
 def main():
